@@ -15,3 +15,7 @@ Route::apiResource("comments", App\Http\Controllers\API\CommentController::class
 
 // ***************** Routes Posts **************************************
 Route::apiResource("posts", App\Http\Controllers\API\PostController::class);
+
+Route::post('login', [App\Http\Controllers\API\LoginController::class, 'login'])->name('login');
+
+Route::post('logout', [App\Http\Controllers\API\LoginController::class, 'logout'])->name('logout')->middleware('auth:web');

@@ -64,7 +64,7 @@ class User extends Authenticatable
     //cardinalité 1,1
     public function role()
     {
-        return $this->belongTo(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function isAdmin()
