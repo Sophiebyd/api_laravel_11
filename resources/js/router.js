@@ -8,16 +8,16 @@ const router = createRouter({
             name: 'App',
             component: () => import('./App.vue')
         },
-        // {
-        //     path: '/inscription',
-        //     name: 'inscription',
-        //     component: () => import('./components/Inscription.vue')
-        // },
-        // {
-        //     path: '/connexion',
-        //     name: 'connexion',
-        //     component: () => import('./components/Connexion.vue')
-        // },
+        {
+            path: '/inscription',
+            name: 'inscription',
+            component: () => import('./components/templates/Inscription.vue')
+        },
+        {
+            path: '/connexion',
+            name: 'connexion',
+            component: () => import('./components/templates/Connexion.vue')
+        },
         // {
         //     path: '/compte',
         //     name: 'compte',
