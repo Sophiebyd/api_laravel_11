@@ -65,6 +65,8 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        // appel de la policy
+        $this->authorize('update', $post);
         $post->update($request->all());
 
         if ($request->image) {
@@ -88,6 +90,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // appel de la policy
+        $this->authorize('delete', $post);
+        
         $post->delete();
         return response()->json([
             'status' => true,
