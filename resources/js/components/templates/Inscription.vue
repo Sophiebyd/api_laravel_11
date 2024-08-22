@@ -5,17 +5,17 @@
                 <p v-if="errorMessage != ''" class="text-white bg-danger w-50 p-3 mx-auto">{{ errorMessage }}</p>
                 <div class="mb-3 row">
                     <div class="col-12">
-                        <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo" required>
+                        <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo" ref="pseudo" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <div class="col-12">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" ref="email" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <div class="col-12">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" ref="password" required>
                     </div>
                     <div class="col-auto">
                         <span id="passwordHelpInline" class="form-text">
@@ -37,17 +37,21 @@
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
+import {useRouter} from 'vue-router';
 
 const pseudo = ref('');
 const email = ref('');
 const password = ref('');
-const errorMessage = ref('')
+const errorMessage = ref('');
+const $router = useRouter();
 
 const inscription = () => {
-    axios.post('/inscription', {
-        pseudo: pseudo.value,
-        email: email.value,
-        password: password.value
+    console.log(pseudo, email, password);
+    axios.post('/api/users', {
+        pseudo: pseudo.value.value,
+        email: email.value.value,
+        password: password.value.value,
+        password_confirmation: password.value.value,
     })
     .then(response => {
         console.log(response);

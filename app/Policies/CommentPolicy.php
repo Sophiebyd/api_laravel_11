@@ -8,6 +8,18 @@ use Illuminate\Auth\Access\Response;
 
 class CommentPolicy
 {
+    // vérification si l'user est admin
+    public function before(user $user){
+        if ($user->role->role_id == 2){
+            return true;
+        } else {
+            return false;
+        }
+
+        // version opti
+        // return $user->role_id == 2;
+    }
+    
     /**
      * Determine whether the user can view any models.
      */

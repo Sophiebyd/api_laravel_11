@@ -1,6 +1,8 @@
 <template>
     <div id="container">
-        <Header />
+        <div v-if="!userStore.getUser.email">
+            <Header />
+        </div>
         <main class="my-4 mx-2">
             <!-- si la route est différente de / (racine du site) -->
             <!-- on affiche le template du composant concerné par la route -->
@@ -29,6 +31,10 @@
 <script setup>
 import Header from "./components/templates/Header.vue";
 import Footer from "./components/templates/footer.vue";
+import { useUserStore } from '../stores/user.js';
+
+const userStore = useUserStore();
+console.log(userStore.getUser);
 </script>
 
 <style scoped></style>
