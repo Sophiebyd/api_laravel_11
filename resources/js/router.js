@@ -18,6 +18,11 @@ const router = createRouter({
             name: 'connexion',
             component: () => import('./components/templates/Connexion.vue')
         },
+        {
+            path: '/profil/:id',
+            name: 'profil',
+            component: () => import('./components/Profil.vue')
+        },
         // {
         //     path: '/compte',
         //     name: 'compte',
@@ -27,11 +32,6 @@ const router = createRouter({
         //     path: '/politique',
         //     name: 'politique',
         //     component: () => import('./components/Politique.vue')
-        // },
-        // {
-        //     path: '/profil/:id',
-        //     name: 'profil',
-        //     component: () => import('./components/Profil.vue')
         // },
         // {
         //     path: '/modifierpost/:id',

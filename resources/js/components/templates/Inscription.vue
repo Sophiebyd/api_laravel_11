@@ -2,20 +2,21 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <form @submit.prevent="inscription">
+                <h1 class="text-center mb-5">Inscription</h1>
                 <p v-if="errorMessage != ''" class="text-white bg-danger w-50 p-3 mx-auto">{{ errorMessage }}</p>
                 <div class="mb-3 row">
                     <div class="col-12">
-                        <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo" ref="pseudo" required>
+                        <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo" v-model="pseudo" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <div class="col-12">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" ref="email" required>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" v-model="email" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <div class="col-12">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" ref="password" required>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" v-model="password" required>
                     </div>
                     <div class="col-auto">
                         <span id="passwordHelpInline" class="form-text">
@@ -46,12 +47,11 @@ const errorMessage = ref('');
 const $router = useRouter();
 
 const inscription = () => {
-    console.log(pseudo, email, password);
     axios.post('/api/users', {
-        pseudo: pseudo.value.value,
-        email: email.value.value,
-        password: password.value.value,
-        password_confirmation: password.value.value,
+        pseudo: pseudo.value,
+        email: email.value,
+        password: password.value,
+        password_confirmation: password.value,
     })
     .then(response => {
         console.log(response);

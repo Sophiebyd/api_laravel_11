@@ -19,3 +19,6 @@ Route::apiResource("posts", App\Http\Controllers\API\PostController::class);
 Route::post('login', [App\Http\Controllers\API\LoginController::class, 'login'])->name('login');
 
 Route::post('logout', [App\Http\Controllers\API\LoginController::class, 'logout'])->name('logout')->middleware('auth:web');
+
+// ***************** Routes Delete **************************************
+route::delete('/users', [App\Http\Controllers\API\UserController::class, 'destroy']);

@@ -7,11 +7,11 @@ export const useUserStore = defineStore('user', {
             email: null,
             pseudo: null,
             picture: null,
+            id: null,
+            role: null,
+            posts: [],
+            comments: [],
         }
-    },
-    // récupère les infos du state
-    getters: {
-        getUser: ({ email, pseudo, picture }) => ({ email, pseudo, picture })
     },
     // modifie les valeurs du state
     actions: {
@@ -19,6 +19,12 @@ export const useUserStore = defineStore('user', {
             this.email = user.email;
             this.pseudo = user.pseudo;
             this.picture = user.image;
-        }
+            this.id = user.id;
+            this.role = user.role;
+        },
+        setPosts(posts) {
+            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            this.posts = posts;
+        },
     }
 })
